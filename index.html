@@ -1,169 +1,436 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>すみれ荘 | 家庭料理の和食居酒屋</title>
-    <meta name="description" content="大人が静かに過ごせる、家庭料理の和食居酒屋「すみれ荘」。まるで家に帰ってきたような安心感を感じられる、落ち着いた和風空間の小さな居酒屋です。">
-    <!-- Google Fonts: Noto Serif JP / Noto Sans JP -->
+    <title>すみれ荘 | 大人が静かに過ごせる、家庭料理の和食居酒屋</title>
+    <meta name="description" content="京急杉田駅から徒歩2分。大人が静かに過ごせる、家庭料理の和食居酒屋「すみれ荘」。毎朝仕入れる鮮魚や旬の食材と、唎酒師厳選の日本酒をお楽しみください。">
+
+    <!-- reset CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Shippori+Mincho+B1:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header class="header js-header">
-        <div class="header-inner">
-            <h1 class="header-logo">
+    <!-- ローディングアニメーション -->
+    <div id="loading" class="loading">
+        <div class="loading__petals">
+            <svg class="petal petal--1" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(90 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(180 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(270 12 12)" />
+                <circle cx="12" cy="12" r="2.5" fill="#f0e6f8" />
+            </svg>
+            <svg class="petal petal--2" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(90 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(180 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(270 12 12)" />
+                <circle cx="12" cy="12" r="2.5" fill="#f0e6f8" />
+            </svg>
+            <svg class="petal petal--3" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(90 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(180 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(270 12 12)" />
+                <circle cx="12" cy="12" r="2.5" fill="#f0e6f8" />
+            </svg>
+            <svg class="petal petal--4" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(90 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(180 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(270 12 12)" />
+                <circle cx="12" cy="12" r="2.5" fill="#f0e6f8" />
+            </svg>
+            <svg class="petal petal--5" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(90 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(180 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(270 12 12)" />
+                <circle cx="12" cy="12" r="2.5" fill="#f0e6f8" />
+            </svg>
+            <svg class="petal petal--6" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(0 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(90 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#a07cc5" opacity="0.7" transform="rotate(180 12 12)" />
+                <ellipse cx="12" cy="7" rx="3.5" ry="6" fill="#b08fd4" opacity="0.6" transform="rotate(270 12 12)" />
+                <circle cx="12" cy="12" r="2.5" fill="#f0e6f8" />
+            </svg>
+        </div>
+        <div class="loading__logo">
+            <p class="loading__name">すみれ荘</p>
+            <p class="loading__sub">Sumiresou</p>
+        </div>
+        <div class="loading__bar">
+            <div class="loading__bar-inner"></div>
+        </div>
+    </div>
+
+    <!-- 舞い散る花びらコンテナ -->
+    <div class="petals-container" id="js-petals"></div>
+
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="header__inner container">
+            <h1 class="header__logo">
                 <a href="#">
-                   <span>すみれ荘</span>
+                    <img class="header__logo-img" src="img1/すみれ荘ロゴデザイン_page-0001.png" alt="和風家庭料理居酒屋 すみれ荘">
                 </a>
             </h1>
-            <nav class="header-nav">
-                <ul>
-                    <li><a href="#concept">こだわり</a></li>
-                    <li><a href="#strength">お品書き</a></li>
-                    <li><a href="#info">店舗情報</a></li>
-                </ul>
-            </nav>
-            <button class="hamburger js-hamburger">
+
+            <div class="header__right">
+                <div class="header__contact-wrap">
+                    <span class="header__contact-label">ご予約・お問い合わせ</span>
+                    <a href="tel:045-298-1673" class="header__contact-tel">
+                        <span class="header__tel-icon">📞</span> 045-298-1673
+                    </a>
+                </div>
+
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li><a href="#">TOP</a></li>
+                        <li><a href="#about">当店は</a></li>
+                        <li><a href="#feature">当店の特徴</a></li>
+                        <li><a href="#recommend">おすすめ</a></li>
+                        <li><a href="#message">お客様へ</a></li>
+                        <li><a href="#contact">店舗情報</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- ハンバーガーボタン(SPのみ) -->
+            <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
-        <div class="mobile-menu js-mobile-menu">
-            <nav class="mobile-nav">
-                <ul>
-                    <li><a href="#concept">こだわり</a></li>
-                    <li><a href="#strength">お品書き</a></li>
-                    <li><a href="#info">店舗情報</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
 
+    <!-- 右固定バナー -->
+    <a href="tel:045-298-1673" class="fixed-banner">
+        <span>Web予約はこちら &gt;</span>
+    </a>
+
+    <!-- SP用ドロワーメニュー -->
+    <div class="drawer" id="js-drawer">
+        <ul class="drawer__menu">
+            <li><a href="#">TOP</a></li>
+            <li><a href="#about" class="js-drawer-link">当店は</a></li>
+            <li><a href="#feature" class="js-drawer-link">当店の特徴</a></li>
+            <li><a href="#recommend" class="js-drawer-link">おすすめ</a></li>
+            <li><a href="#message" class="js-drawer-link">お客様へ</a></li>
+            <li><a href="#contact" class="js-drawer-link">店舗情報</a></li>
+        </ul>
+    </div>
+
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg" style="background-image: url('img1/image.png');"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content fade-in-up">
-                <h2 class="hero-title">大人が静かに過ごせる、<br>家庭料理の和食居酒屋</h2>
-                <div class="hero-logo">
-                    <img src="img1/image%20(4).png" alt="すみれ荘 ロゴ" class="logo-image">
-                </div>
-                <div class="scroll-prompt">
-                    <span>Scroll</span>
+        <!-- ヒーローエリア -->
+        <section class="hero-mv" id="top">
+            <div class="hero-mv__panel hero-mv__panel--left">
+                <div class="hero-mv__slides" id="slidesLeft">
+                    <div class="hero-mv__slide is-active" style="background-image: url('img1/namerou-food.jpg')"></div>
+                    <div class="hero-mv__slide" style="background-image: url('img1/sashimi-food.jpg')"></div>
+                    <div class="hero-mv__slide" style="background-image: url('img1/iwashi-food.jpg')"></div>
                 </div>
             </div>
-        </section>
 
-        <!-- Concept Section -->
-        <section id="concept" class="section concept">
-            <div class="container section-fade">
-                <h3 class="section-title">コンセプト</h3>
-                <div class="concept-content">
-                    <p class="lead-text">
-                        すみれ荘は、駅直結の立地にありながら<br>
-                        まるで家に帰ってきたような安心感を感じられる、<br>
-                        落ち着いた和風空間の小さな居酒屋です。
-                    </p>
-                    <p class="sub-text">
-                        店内は喫煙可能のため、20歳未満のお客様のご入店はご遠慮いただいております。<br>
-                        そのため、店内は騒がしさが少なく、ゆったりとお酒と会話を楽しめる“大人のための空間”になっています。<br>
-                        お一人様でも気軽に立ち寄れるカウンター席を中心に、<br>
-                        静かな時間をお過ごしいただけます。
-                    </p>
+            <div class="hero-mv__panel hero-mv__panel--right">
+                    <p class="hero-mv__tagline">横浜 · 杉田</p>
+                    <a href="tel:045-298-1673" class="hero-mv__cta">ご予約はこちら</a>
                 </div>
             </div>
-            <div class="bg-pattern pattern-top"></div>
+
+            <!-- 花びらデコレーション -->
+            <div class="petal-deco top-right"></div>
         </section>
 
-        <!-- Strengths Section -->
-        <section id="strength" class="section strength">
+        <!-- 当店は (About) -->
+        <section class="about section" id="about">
+            <div class="container relative">
+                <div class="section__header" data-aos="fade-up">
+                    <span class="section__en">About</span>
+                    <h2 class="section__title">当店は</h2>
+                </div>
+
+                <div class="about__inner">
+                    <!-- 交互レイアウト 1 -->
+                    <div class="about__row" data-aos="fade-up">
+                        <div class="about__img-box">
+                            <img src="img1/store-img2.png" alt="外観" class="circle-img" loading="lazy">
+                        </div>
+                        <div class="about__text-box">
+                            <p>
+                                京浜急行杉田駅直結！<br>
+                                お魚を中心とした和風の家庭料理を<br>
+                                ご提供いたします。<br><br>
+                                大人が静かに過ごせる、家庭料理の和食居酒屋<br>
+                                まるで家に帰ってきたような安心感を感じられる、<br>
+                                落ち着いた和風空間の小さな居酒屋です。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 交互レイアウト 2 -->
+                    <div class="about__row about__row--reverse" data-aos="fade-up">
+                        <div class="about__img-box">
+                            <img src="img1/store-image.png" alt="店内カウンター" class="circle-img" loading="lazy">
+                        </div>
+                        <div class="about__text-box">
+                            <p>
+                                アットホームで落ちついた和風の店内。<br>
+                                お一人様でも安心して飲める<br>
+                                カウンター席をご用意しております。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="petal-deco bottom-left"></div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- 当店の特徴 (Feature) - カード3枚グリッド -->
+        <section class="feature section" id="feature">
             <div class="container">
-                <h3 class="section-title text-center section-fade">当店のこだわり</h3>
-                
-                <div class="strength-list">
-                    <!-- Strength 1 -->
-                    <div class="strength-item section-fade">
-                        <div class="strength-img">
-                            <img src="img1/image%20(1).png" alt="毎朝仕入れる鮮魚と旬の食材">
+                <div class="section__header" data-aos="fade-up">
+                    <span class="section__en">Feature</span>
+                    <h2 class="section__title">当店の特徴</h2>
+                </div>
+
+                <div class="feature__grid">
+                    <!-- Feature 1 -->
+                    <div class="feature__card" data-aos="fade-up">
+                        <div class="feature__card-img">
+                            <img src="img1/sashimi-food.jpg" alt="毎朝仕入れる鮮魚と旬の食材" loading="lazy">
                         </div>
-                        <div class="strength-text">
-                            <h4><span class="num">01</span>毎朝仕入れる鮮魚と旬の食材</h4>
-                            <p>魚屋で修業した女将が、毎朝市場で仕入れた鮮魚を使用。<br>その日一番の状態の魚を、和食の家庭料理としてご提供します。<br>さらに、季節ごとにメニューを変更し、訪れるたびに「旬」を感じられるのも当店の魅力です。</p>
+                        <div class="feature__card-body">
+                            <span class="feature__card-num">01</span>
+                            <h3 class="feature__card-title">毎朝仕入れる鮮魚と<br>旬の食材</h3>
+                            <p class="feature__card-text">
+                                魚屋で修業した女将が毎朝市場で仕入れる鮮魚をはじめ、メニューが季節により変わります。ご来店ごとに旬の魅力をご堪能ください。
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Strength 2 -->
-                    <div class="strength-item reverse section-fade">
-                        <div class="strength-img">
-                            <img src="img1/image%20(2).png" alt="料理に合わせて選ぶ日本酒">
+                    <!-- Feature 2 -->
+                    <div class="feature__card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature__card-img">
+                            <img src="img1/sake.png" alt="料理に合わせて選ぶ日本酒" loading="lazy">
                         </div>
-                        <div class="strength-text">
-                            <h4><span class="num">02</span>料理に合わせて選ぶ日本酒</h4>
-                            <p>唎酒師が厳選した日本酒を常時ご用意。<br>期間限定で銘柄が変わるため、新しいお酒との出会いを楽しめます。<br>焼酎・ビール・ウイスキーも幅広く取り揃え、料理に合わせた一杯をご提案いたします。</p>
+                        <div class="feature__card-body">
+                            <span class="feature__card-num">02</span>
+                            <h3 class="feature__card-title">料理に合わせて選ぶ<br>日本酒</h3>
+                            <p class="feature__card-text">
+                                唎酒師厳選の日本酒を常時2種＋期間限定銘柄でご用意。お食事とのマリアージュを楽しめる多彩なドリンクでおもてなしします。
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Strength 3 -->
-                    <div class="strength-item section-fade">
-                        <div class="strength-img">
-                            <img src="img1/image%20(3).png" alt="静かに飲める大人の空間">
+                    <!-- Feature 3 -->
+                    <div class="feature__card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature__card-img">
+                            <img src="img1/image (1).png" alt="静かに飲める大人の空間" loading="lazy">
                         </div>
-                        <div class="strength-text">
-                            <h4><span class="num">03</span>静かに飲める大人の空間</h4>
-                            <p>約15席の小さな店内は、どこか懐かしい和の雰囲気。<br>喫煙可能かつ20歳以上限定のため、落ち着いた客層が中心です。</p>
+                        <div class="feature__card-body">
+                            <span class="feature__card-num">03</span>
+                            <h3 class="feature__card-title">静かに飲める<br>大人の空間</h3>
+                            <p class="feature__card-text">
+                                約15席の店内は、20歳以上限定で喫煙可能。騒がしさが少なく、ゆったりとお酒と会話を楽しめる大人のための和風空間です。
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Info Section -->
-        <section id="info" class="section info">
-            <div class="container section-fade">
-                <h3 class="section-title text-center">店舗情報</h3>
-                <div class="info-card">
-                    <div class="info-details">
-                        <dl class="info-list">
-                            <dt>店名</dt>
-                            <dd>すみれ荘</dd>
-                            <dt>住所</dt>
-                            <dd>神奈川県横浜市磯子区杉田1-17-1 プララ杉田208</dd>
-                            <dt>アクセス</dt>
-                            <dd>京急杉田から徒歩2分<br>JR新杉田から徒歩10分</dd>
-                            <dt>営業時間</dt>
-                            <dd>月〜土: 17:00〜23:00<br>日曜日: 15:00〜21:00</dd>
-                            <dt>定休日</dt>
-                            <dd>火曜日、第3月曜、年末年始、夏休み<br>（臨時休業有り）</dd>
-                            <dt>備考</dt>
-                            <dd>喫煙可能店（20歳未満入店不可）</dd>
-                        </dl>
-                        <div class="info-btn-wrap">
-                            <a href="https://sumiresou.instatry.jp/" target="_blank" class="btn">公式サイトを見る</a>
+        <!-- おすすめ (Recommend) -->
+        <section class="recommend section" id="recommend">
+            <div class="container">
+                <div class="section__header" data-aos="fade-up">
+                    <span class="section__en">Recommend</span>
+                    <h2 class="section__title">おすすめ</h2>
+                </div>
+
+                <!-- イチオシ -->
+                <div class="recommend__top" data-aos="fade-up">
+                    <div class="recommend__top-body">
+                        <span class="recommend__label">当店のイチオシ</span>
+                        <h3 class="recommend__top-title">本日のナメロウ</h3>
+                        <p class="recommend__top-text">
+                            他店では食べられない新鮮な真鯛やヒラメなどでお作りするナメロウは絶品です。ぜひ当店厳選したお酒と一緒にご賞味ください。<br>
+                            <small>※仕入れ状況によって魚種が変わります。</small>
+                        </p>
+                    </div>
+                    <div class="recommend__top-img">
+                        <img src="img1/namerou-food.jpg" alt="本日のナメロウ" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- サブ3品グリッド -->
+                <div class="recommend__grid">
+                    <div class="recommend__card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="recommend__card-img">
+                            <img src="img1/sahimi-food.jpg" alt="お刺身盛り合わせ" loading="lazy">
+                        </div>
+                        <div class="recommend__card-body">
+                            <h4 class="recommend__card-title">お刺身盛り合わせ</h4>
+                            <p class="recommend__card-text">その日に仕入れた季節ごとの新鮮なお魚をご提供いたします。</p>
                         </div>
                     </div>
-                    <div class="info-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14182.260840248866!2d139.61081521639!3d35.38556611361514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018428801dcccc3%3A0xebea9e6129def59b!2z44CSMjM1LTAwMzMg56We5aWI5bed55yM5qiq5rWc5biC56Ov5a2Q5Yy65p2J55Sw77yR5LiB55uu77yR77yX4oiS77yR!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="recommend__card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="recommend__card-img">
+                            <img src="img1/omulet.png" alt="納豆オムレツ" loading="lazy">
+                        </div>
+                        <div class="recommend__card-body">
+                            <h4 class="recommend__card-title">納豆オムレツ</h4>
+                            <p class="recommend__card-text">ふわふわな食感で常連さんに大人気な逸品です。</p>
+                        </div>
+                    </div>
+                    <div class="recommend__card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="recommend__card-img">
+                            <img src="img1/iwashi-food.jpg" alt="イワシのつみれ汁" loading="lazy">
+                        </div>
+                        <div class="recommend__card-body">
+                            <h4 class="recommend__card-title">イワシのつみれ汁</h4>
+                            <p class="recommend__card-text">いわしと野菜のうま味が染み渡るつみれ汁でほっこりしてください。</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-pattern pattern-bottom"></div>
+
+            <div class="btn-wrap" data-aos="fade-up">
+                <a href="tel:045-298-1673" class="btn-primary">
+                    <span class="btn__icon">📞</span> ご予約はこちら
+                </a>
+            </div>
+
+            <div class="section-divider-floral"></div>
+        </section>
+
+        <!-- お客様へ (Message) 画像左・テキスト右の2カラム -->
+        <section class="message section" id="message">
+            <div class="container">
+                <div class="section__header" data-aos="fade-up">
+                    <span class="section__en">Message</span>
+                    <h2 class="section__title">お客様へ</h2>
+                </div>
+
+                <div class="message__inner">
+                    <div class="message__img" data-aos="fade-right">
+                        <img src="img1/image.png" alt="料理風景" loading="lazy">
+                    </div>
+                    <div class="message__body" data-aos="fade-left">
+                        <p class="message__text">
+                            四季折々の食材をリーズナブルなお値段でご提供しております。<br>
+                            落ち着いた空間で美味しいお酒と共におくつろぎください。<br><br>
+
+                            又当店は喫煙可能となっており、<br>
+                            20歳未満のお客様のご入店はお断りしておりますのであらかじめご了承下さい。<br><br>
+
+                            最後に数あるお店の中、すみれ荘をご覧頂きありがとうございます。<br>
+                            お客様のご来店をお待ちしております。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 店舗情報 (Contact) -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="section__header" data-aos="fade-up">
+                    <span class="section__en">Contact</span>
+                    <h2 class="section__title">店舗情報</h2>
+                </div>
+
+                <div class="contact__inner">
+                    <div class="contact__info" data-aos="fade-up">
+                        <div class="contact__logo">すみれ荘</div>
+                        <dl class="contact__dl">
+                            <div class="contact__row">
+                                <dt>住所</dt>
+                                <dd>〒235-0033 <br>神奈川県横浜市磯子区杉田1-17-1 プララ杉田208</dd>
+                            </div>
+                            <div class="contact__row">
+                                <dt>アクセス</dt>
+                                <dd>京急杉田駅から徒歩2分<br>JR新杉田駅から徒歩10分</dd>
+                            </div>
+                            <div class="contact__row">
+                                <dt>電話</dt>
+                                <dd>
+                                    <a href="tel:045-298-1673" class="contact__tel-link">045-298-1673</a><br>
+                                </dd>
+                            </div>
+                            <div class="contact__row">
+                                <dt>営業時間</dt>
+                                <dd>月〜土 17:00〜23:00（L.O. 22:00 / ドリンクL.O. 22:30）<br>日曜 15:00〜21:00</dd>
+                            </div>
+                            <div class="contact__row">
+                                <dt>定休日</dt>
+                                <dd>火曜日・第3月曜日・年末年始・夏休み<br>※臨時休業あり</dd>
+                            </div>
+                        </dl>
+                        <p class="contact__note">
+                            ※ご予算に応じて宴会等のご相談を承ります。<br>
+                            ※貸し切りはご予算により8名様〜15名様にて承ります。
+                        </p>
+                    </div>
+                    <div class="contact__map" data-aos="fade-up" data-aos-delay="100">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.5436761372584!2d139.6138074801498!3d35.38523752136793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184366eee65c53%3A0x3ffb93348b4e7089!2z44GZ44G_44KM6I2Y!5e0!3m2!1sja!2sjp!4v1774520528891!5m2!1sja!2sjp"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="petal-deco top-left"></div>
+            <div class="petal-deco bottom-right"></div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="img1/image%20(4).png" alt="すみれ荘 ロゴ" class="footer-logo-img">
+        <div class="footer__inner container">
+            <div class="footer__sns" data-aos="fade-up">
+                <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=079qyuge" target="_blank" rel="noopener"
+                    class="footer__banner footer__banner--line">
+                    <div class="footer__banner-icon">LINE</div>
+                    <div class="footer__banner-text">
+                        <span class="footer__banner-title">公式LINE</span>
+                        <span class="footer__banner-desc">臨時休業、貸切情報、営業時間などを配信いたします。</span>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/sumiresou1028/" target="_blank" rel="noopener"
+                    class="footer__banner footer__banner--ig">
+                    <div class="footer__banner-icon">Instagram</div>
+                    <div class="footer__banner-text">
+                        <span class="footer__banner-title">公式Instagram</span>
+                        <span class="footer__banner-desc">お店の最新情報やメニューをご紹介しています。</span>
+                    </div>
+                </a>
             </div>
-            <p class="copyright">&copy; 2024 すみれ荘 All Rights Reserved.</p>
+            <p class="footer__copy">&copy; 2024 すみれ荘 All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
