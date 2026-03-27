@@ -492,48 +492,35 @@ a:hover {
 }
 
 /* ==========================================================
-   Hero MV (2-Split)
+   Hero MV
 ========================================================== */
 .hero-mv {
-  display: flex;
+  position: relative;
   width: 100%;
   height: 100svh;
   min-height: 600px;
   overflow: hidden;
-  position: relative;
+}
+
+/* 4分割グリッド */
+.hero-mv__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 100%;
 }
 
 /* 各パネル共通 */
 .hero-mv__panel {
   position: relative;
-  width: 50%;
-  height: 100%;
   overflow: hidden;
-  /* ローディング後にスライドインで登場 */
-  transform: translateX(0);
-  transition: transform 0s;
 }
 
-/* ローディング前は画面外に待機 */
-.hero-mv:not(.is-ready) .hero-mv__panel--left  { transform: translateX(-100%); }
-.hero-mv:not(.is-ready) .hero-mv__panel--right { transform: translateX(100%); }
-
-/* ローディング完了後：スライドイン */
-.hero-mv.is-ready .hero-mv__panel--left,
-.hero-mv.is-ready .hero-mv__panel--right {
-  transform: translateX(0);
-  transition: transform 1.0s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.hero-mv.is-ready .hero-mv__panel--right {
-  transition-delay: 0.15s;
-}
-
-/* パネル内のスライドラッパー */
+/* スライドラッパー */
 .hero-mv__slides {
   position: absolute;
   inset: 0;
-  z-index: 0;
 }
 
 /* 各スライド */
@@ -544,23 +531,22 @@ a:hover {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 1.4s ease;
 }
 
-/* 表示中のスライド */
 .hero-mv__slide.is-active {
   opacity: 1;
 }
 
-/* オーバーレイ（暗くなりすぎないよう調整） */
+/* オーバーレイ */
 .hero-mv__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(44, 40, 36, 0.4); /* 暗くして写真の視認性を安定させる */
+  background: rgba(15, 10, 8, 0.2);
   z-index: 1;
 }
 
-/* 中央テキスト新規追加分 */
+/* 中央テキスト：グリッドの上に重ねる */
 .hero-mv__center {
   position: absolute;
   inset: 0;
@@ -569,17 +555,19 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  text-align: center;
+  gap: 0.8rem;
+  padding: 2rem;
   opacity: 0;
-  transition: opacity 1s ease 1s; /* ローディング完了後にフェードイン */
-  pointer-events: none;
+  transition: opacity 0.8s ease 0.9s;
 }
 
 .hero-mv.is-ready .hero-mv__center {
   opacity: 1;
 }
 
-.hero-mv__copy-horizontal {
+/* 中央テキスト新規追加分 - 元のスタイルを統合 */
+.hero-mv__copy {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 3.6rem); /* 文字サイズ大きく */
   font-weight: 500;
@@ -589,7 +577,7 @@ a:hover {
   text-align: center;
 }
 
-.hero-mv__logo-large {
+.hero-mv__logo {
   font-family: var(--font-serif);
   font-size: clamp(3rem, 6vw, 6rem); /* とても大きく */
   font-weight: 700;
@@ -599,53 +587,90 @@ a:hover {
   text-align: center;
 }
 
-/* 中央の区切り線（装飾） */
-.hero-mv::after {
+.hero-mv__tagline {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.hero-mv__cta {
+  display: inline-flex;
+  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-violet);
+  color: var(--color-text-inverse);
+  padding: 12px 40px;
+  border-radius: 4px;
+  font-family: var(--font-base);
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 15px rgba(139, 111, 174, 0.5);
+  transition: all 0.3s ease;
+}
+
+.hero-mv__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 111, 174, 0.6);
+  opacity: 1;
+}
+
+/* グリッド区切り線（薄紫・装飾） */
+.hero-mv__grid::after {
   content: '';
   position: absolute;
-  top: 10%;
+  top: 0; bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
   width: 1px;
-  height: 80%;
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(212, 195, 232, 0.5) 30%,
-    rgba(212, 195, 232, 0.5) 70%,
+    rgba(160, 124, 197, 0.4) 20%,
+    rgba(160, 124, 197, 0.4) 80%,
     transparent
   );
   z-index: 5;
   pointer-events: none;
 }
 
-/* スマホ対応：縦に2分割（上下） */
+.hero-mv__grid::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(160, 124, 197, 0.4) 20%,
+    rgba(160, 124, 197, 0.4) 80%,
+    transparent
+  );
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ローディング前スライドイン */
+.hero-mv:not(.is-ready) .hero-mv__panel[data-panel="0"] { transform: translate(-100%, -100%); }
+.hero-mv:not(.is-ready) .hero-mv__panel[data-panel="1"] { transform: translate( 100%, -100%); }
+.hero-mv:not(.is-ready) .hero-mv__panel[data-panel="2"] { transform: translate(-100%,  100%); }
+.hero-mv:not(.is-ready) .hero-mv__panel[data-panel="3"] { transform: translate( 100%,  100%); }
+
+.hero-mv.is-ready .hero-mv__panel {
+  transform: translate(0, 0);
+  transition: transform 1.0s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hero-mv.is-ready .hero-mv__panel[data-panel="1"] { transition-delay: 0.1s; }
+.hero-mv.is-ready .hero-mv__panel[data-panel="2"] { transition-delay: 0.1s; }
+.hero-mv.is-ready .hero-mv__panel[data-panel="3"] { transition-delay: 0.2s; }
+
+/* SP：2×2のまま維持（高さ調整のみ） */
 @media (max-width: 767px) {
   .hero-mv {
-    flex-direction: column;
-  }
-  .hero-mv__panel {
-    width: 100%;
-    height: 50%;
-  }
-  .hero-mv:not(.is-ready) .hero-mv__panel--left  { transform: translateY(-100%); }
-  .hero-mv:not(.is-ready) .hero-mv__panel--right { transform: translateY(100%); }
-  .hero-mv.is-ready .hero-mv__panel--left,
-  .hero-mv.is-ready .hero-mv__panel--right {
-    transform: translateY(0);
-  }
-  .hero-mv::after {
-    top: 50%;
-    left: 10%;
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(212, 195, 232, 0.5) 30%,
-      rgba(212, 195, 232, 0.5) 70%,
-      transparent
-    );
+    height: 100svh;
   }
 }
 
@@ -930,9 +955,13 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    background: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
+    background: #fff; /* cleaner white background to pop out */
+    border: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    border-radius: 8px; /* Smooth corners */
     padding: 30px;
+    position: relative;
+    overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -943,41 +972,57 @@ a:hover {
     }
 }
 
+/* Subtle accent line on top of the card */
+.contact__inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--color-violet-light);
+}
+
 .contact__info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact__logo {
     font-family: var(--font-serif);
     font-size: 3.2rem;
-    font-weight: 700;
+    font-weight: 500; /* slightly thinner looks more elegant */
+    letter-spacing: 0.1em;
     margin-bottom: 30px;
+    color: var(--color-text);
 }
 
 .contact__dl {
     margin-bottom: 30px;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid rgba(201, 185, 154, 0.4); /* subtle border */
 }
 
 .contact__row {
     display: flex;
     flex-direction: column;
     padding: 20px 0;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px dashed rgba(201, 185, 154, 0.6); /* dashed looks elegant */
 }
 
 @media (min-width: 768px) {
     .contact__row {
         flex-direction: row;
+        align-items: baseline; /* align text to baseline */
     }
 }
 
 .contact__row dt {
-    width: 100px;
+    width: 120px; /* slightly wider */
     font-family: var(--font-serif);
     color: var(--color-violet-light);
     font-weight: 600;
     margin-bottom: 10px;
+    letter-spacing: 0.1em;
 }
 
 @media (min-width: 768px) {
@@ -989,23 +1034,46 @@ a:hover {
 .contact__row dd {
     flex: 1;
     font-size: 1.4rem;
+    line-height: 1.8;
 }
 
 .contact__tel-link {
-    font-size: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 2.8rem; /* slightly larger */
     font-family: var(--font-eng);
-    color: var(--color-violet-light);
+    color: var(--color-text);
     font-weight: 500;
     letter-spacing: 0.05em;
+    transition: color 0.3s;
+}
+
+.contact__tel-link:hover {
+    color: var(--color-violet);
+    opacity: 1; /* reset default link opacity hover */
 }
 
 .contact__note {
     font-size: 1.3rem;
+    line-height: 1.8;
     color: var(--color-text-muted);
+    background: var(--color-bg-beige);
+    padding: 15px 20px;
+    border-radius: 4px;
+    border-left: 3px solid var(--color-violet-pale);
 }
 
 .contact__map {
     flex: 1;
+    width: 100%;
+}
+
+.contact__map iframe {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px; /* smooth corners */
+    filter: grayscale(20%) contrast(1.1); /* style map slightly */
 }
 
 /* ==========================================================

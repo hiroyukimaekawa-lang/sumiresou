@@ -71,8 +71,7 @@
             </svg>
         </div>
         <div class="loading__logo">
-            <p class="loading__name">すみれ荘</p>
-            <p class="loading__sub">Sumiresou</p>
+            <img src="img1/すみれ荘ロゴデザイン_page-0001.png" alt="すみれ荘" class="loading__logo-img">
         </div>
         <div class="loading__bar">
             <div class="loading__bar-inner"></div>
@@ -140,18 +139,59 @@
     <main>
         <!-- ヒーローエリア -->
         <section class="hero-mv" id="top">
-            <div class="hero-mv__panel hero-mv__panel--left">
-                <div class="hero-mv__slides" id="slidesLeft">
-                    <div class="hero-mv__slide is-active" style="background-image: url('img1/namerou-food.jpg')"></div>
-                    <div class="hero-mv__slide" style="background-image: url('img1/sashimi-food.jpg')"></div>
-                    <div class="hero-mv__slide" style="background-image: url('img1/iwashi-food.jpg')"></div>
-                </div>
-            </div>
 
-            <div class="hero-mv__panel hero-mv__panel--right">
-                    <p class="hero-mv__tagline">横浜 · 杉田</p>
-                    <a href="tel:045-298-1673" class="hero-mv__cta">ご予約はこちら</a>
+            <!-- 4分割グリッド -->
+            <div class="hero-mv__grid">
+
+                <!-- パネル①：左上 -->
+                <div class="hero-mv__panel" data-panel="0">
+                    <div class="hero-mv__slides">
+                        <div class="hero-mv__slide" style="background-image:url('img1/namerou-food.jpg')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/sashimi-food.jpg')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/iwashi-food.jpg')"></div>
+                    </div>
+                    <div class="hero-mv__overlay"></div>
                 </div>
+
+                <!-- パネル②：右上 -->
+                <div class="hero-mv__panel" data-panel="1">
+                    <div class="hero-mv__slides">
+                        <div class="hero-mv__slide" style="background-image:url('img1/store-image.png')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/image.png')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/image (1).png')"></div>
+                    </div>
+                    <div class="hero-mv__overlay"></div>
+                </div>
+
+                <!-- パネル③：左下 -->
+                <div class="hero-mv__panel" data-panel="2">
+                    <div class="hero-mv__slides">
+                        <div class="hero-mv__slide" style="background-image:url('img1/sake.png')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/sahimi-food.jpg')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/omulet.png')"></div>
+                    </div>
+                    <div class="hero-mv__overlay"></div>
+                </div>
+
+                <!-- パネル④：右下 -->
+                <div class="hero-mv__panel" data-panel="3">
+                    <div class="hero-mv__slides">
+                        <div class="hero-mv__slide" style="background-image:url('img1/store-img2.png')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/すみれ荘ロゴデザイン_page-0001.png')"></div>
+                        <div class="hero-mv__slide" style="background-image:url('img1/store-img2.png')"></div>
+                    </div>
+                    <div class="hero-mv__overlay"></div>
+                </div>
+
+            </div>
+            <!-- /hero-mv__grid -->
+
+            <!-- 中央テキスト（4分割の上に重ねる・既存を維持） -->
+            <div class="hero-mv__center">
+                <p class="hero-mv__copy">家庭料理を<br>ほっこり味わえる</p>
+                <div class="hero-mv__logo">すみれ荘</div>
+                <p class="hero-mv__tagline">横浜 · 杉田</p>
+                <a href="tel:045-298-1673" class="hero-mv__cta">ご予約はこちら</a>
             </div>
 
             <!-- 花びらデコレーション -->
@@ -373,7 +413,10 @@
                             <div class="contact__row">
                                 <dt>電話</dt>
                                 <dd>
-                                    <a href="tel:045-298-1673" class="contact__tel-link">045-298-1673</a><br>
+                                    <a href="tel:045-298-1673" class="contact__tel-link">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                        045-298-1673
+                                    </a><br>
                                 </dd>
                             </div>
                             <div class="contact__row">
@@ -393,7 +436,7 @@
                     <div class="contact__map" data-aos="fade-up" data-aos-delay="100">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.5436761372584!2d139.6138074801498!3d35.38523752136793!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184366eee65c53%3A0x3ffb93348b4e7089!2z44GZ44G_44KM6I2Y!5e0!3m2!1sja!2sjp!4v1774520528891!5m2!1sja!2sjp"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>

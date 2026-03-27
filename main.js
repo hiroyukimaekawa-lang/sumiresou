@@ -23,29 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Remove Swiper initialization
-    function initPanelSlider(slidesEl, intervalMs) {
-        if (!slidesEl) return;
-        const slides = Array.from(slidesEl.querySelectorAll('.hero-mv__slide'));
-        if (slides.length === 0) return;
+    // 各パネルを独立したスライドショーとして動かす
+    // パネルごとにスタートタイミングをずらして動きに変化をつける
+    function initPanelSlider(panel, delayStart, interval) {
+        const slides = panel.querySelectorAll('.hero-mv__slide');
+        if (!slides.length) return;
 
         let current = 0;
-        slides[current].classList.add('is-active');
 
-        setInterval(() => {
-            slides[current].classList.remove('is-active');
-            current = (current + 1) % slides.length;
+        setTimeout(() => {
+            // 最初のスライドを表示
             slides[current].classList.add('is-active');
-        }, intervalMs);
+
+            setInterval(() => {
+                slides[current].classList.remove('is-active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('is-active');
+            }, interval);
+        }, delayStart);
     }
 
     // Add Loading logic
     window.addEventListener('load', () => {
-        // Init panel slides
-        initPanelSlider(document.getElementById('slidesLeft'), 4000);
-        setTimeout(() => {
-            initPanelSlider(document.getElementById('slidesRight'), 4000);
-        }, 1500);
+        // ローディング完了処理（既存と統合）
         setTimeout(() => {
             const loading = document.getElementById('loading');
             if(loading) loading.classList.add('is-hidden');
@@ -53,6 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Activate Hero animation
             const hero = document.querySelector('.hero-mv');
             if(hero) hero.classList.add('is-ready');
+
+            // 4パネルそれぞれ異なるタイミングで開始
+            const panels = document.querySelectorAll('.hero-mv__panel');
+            if(panels.length >= 4) {
+                initPanelSlider(panels[0],    0, 4000); // 左上：即スタート
+                initPanelSlider(panels[1], 1000, 4000); // 右上：1秒遅れ
+                initPanelSlider(panels[2], 1800, 4000); // 左下：1.8秒遅れ
+                initPanelSlider(panels[3],  600, 4000); // 右下：0.6秒遅れ
+            }
         }, 2200);
     });
 
